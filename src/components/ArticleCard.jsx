@@ -1,7 +1,6 @@
 import "../styles/ArticleCard.css"
 
 const ArticleCard = ({ article }) => {
-  console.log(article.article_img_url)
   return (
     <li
       className="articleCard"
