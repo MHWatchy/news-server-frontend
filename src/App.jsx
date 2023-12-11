@@ -1,6 +1,7 @@
-import './App.css'
+import "./App.css"
 
-function App() {<>hewwo</>
+function App() {
+  ;<>hewwo</>
 }
 
 export default App
