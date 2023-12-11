@@ -10,6 +10,8 @@ const Article = () => {
 
   useEffect(() => {
     getSingleArticle(article_id).then(({ article }) => {
+      const date = new Date(article.created_at)
+      article = { ...article, created_at: date.toUTCString() }
       setArticle(article)
       setIsLoading(false)
     })
@@ -22,7 +24,7 @@ const Article = () => {
       <h3>{article.topic}</h3>
       <h1>{article.title}</h1>
       <h2>by {article.author}</h2>
-      <h3>{Date(article.created_at)}</h3>
+      <h3>{article.created_at}</h3>
       <img
         id="articleCover"
         src={article.article_img_url}

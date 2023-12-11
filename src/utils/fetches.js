@@ -6,6 +6,12 @@ const newsApi = axios.create({
 
 export const getSingleArticle = (id) => {
   return newsApi.get(`/articles/${id}`).then(({data}) => {
+return data
+  })
+}
+
+export const getArticles = () => {
+  return newsApi.get("/articles").then(({ data }) => {
     return data
   })
 }

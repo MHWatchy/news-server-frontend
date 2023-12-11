@@ -1,0 +1,13 @@
+#home {
+  text-align: center;
+}
+
+#articleList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  list-style: none;
+  padding: 0px;
+}
