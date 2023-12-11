@@ -1,4 +1,6 @@
 #header {
+  background-color: white;
+
   display: flex;
   flex-flow: row;
   justify-content: space-around;

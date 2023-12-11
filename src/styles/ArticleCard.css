@@ -1,0 +1,15 @@
+.articleCard {
+  text-align: center;
+  width: 40%;
+  height: 10em;
+  border: 1px solid black;
+  margin: 1em;
+}
+
+.articleCard > h3 {
+  background-color: white;
+  overflow: hidden;
+  max-height: 40%;
+  margin: 0px;
+}
+
