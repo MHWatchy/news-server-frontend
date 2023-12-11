@@ -1,7 +1,7 @@
 import "../styles/Article.css"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { getSingleArticle } from "../utils/fetches"
+import { getSingleArticle, patchArticleVotes } from "../utils/fetches"
 
 const Article = () => {
   const { article_id } = useParams()
@@ -16,6 +16,14 @@ const Article = () => {
       setIsLoading(false)
     })
   }, [])
+
+  const sendVote = (num) => {
+    patchArticleVotes(article_id, num).then(({article})=>{
+      
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
 
   if (isLoading) return <>loading...</>
 
@@ -32,6 +40,26 @@ const Article = () => {
       />
       <p>{article.body}</p>
       <h3>{article.votes} votes</h3>
+      <section id="buttonSection">
+        <button
+          id="increaseVotes"
+          className="voteButton"
+          onClick={() => {
+            sendVote(1)
+          }}
+        >
+          +
+        </button>
+        <button
+          id="decreaseVotes"
+          className="voteButton"
+          onClick={() => {
+            sendVote(-1)
+          }}
+        >
+          -
+        </button>
+      </section>
     </section>
   )
 }
