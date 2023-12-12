@@ -8,11 +8,13 @@ import PostCommentForm from "./PostCommentForm"
 const Comments = () => {
   const { article_id } = useParams()
   const [comments, setComments] = useState([])
+  const [addingComment, setAddingComment] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getArticleComments(article_id).then(({ comments }) => {
       setComments(comments)
+      setAddingComment(false)
       setIsLoading(false)
     })
   }, [])
@@ -21,8 +23,8 @@ const Comments = () => {
 
   return (
     <>
-      <PostCommentForm />
-      <ul id="commentList">
+      <PostCommentForm addingComment={addingComment} setAddingComment={setAddingComment}/>
+      <ul className="commentList">
         {!comments.length
           ? "No Comments"
           : comments.map((comment) => {
