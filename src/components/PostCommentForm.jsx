@@ -6,9 +6,10 @@ import { useParams } from "react-router"
 import CommentCard from "./CommentCard"
 
 const PostCommentForm = ({ addingComment, setAddingComment }) => {
+  const { user, setUser } = useContext(UserContext)
   const [commentValue, setCommentValue] = useState("")
   const [fakeComment, setFakeComment] = useState({})
-  const { user, setUser } = useContext(UserContext)
+  const [commentSuccessful, setCommentSuccessful] = useState(true)
   const { article_id } = useParams()
 
   function handleChange(e) {
@@ -17,16 +18,20 @@ const PostCommentForm = ({ addingComment, setAddingComment }) => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    //NEED TO CHECK IF USER LOGGED IN, OTHERWISE REDIRECT TO LOGIN
-    postComment(article_id, commentValue, user.username).then((data) => {
-      setFakeComment({
-        author: user.username,
-        created_at: Date.now(),
-        body: commentValue,
-        votes: 0,
+    postComment(article_id, commentValue, user.username)
+      .then((data) => {
+        setFakeComment({
+          author: user.username,
+          created_at: Date.now(),
+          body: commentValue,
+          votes: 0,
+        })
+        setAddingComment(true)
+        setCommentSuccessful(true)
       })
-      setAddingComment(true)
-    })
+      .catch((err) => {
+        setCommentSuccessful(false)
+      })
   }
 
   return (
@@ -43,7 +48,9 @@ const PostCommentForm = ({ addingComment, setAddingComment }) => {
         <button id="postCommentButton">Post Comment</button>
       </form>
       <section id="optimisticComment" className="commentList">
-        {!addingComment ? null : (
+        {!commentSuccessful ? (
+          <p>Something went wrong... </p>
+        ) : !addingComment ? null : (
           <CommentCard comment={fakeComment} key={commentValue} />
         )}
       </section>
