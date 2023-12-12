@@ -7,6 +7,7 @@ const Article = () => {
   const { article_id } = useParams()
   const [article, setArticle] = useState({})
   const [votes, setVotes] = useState(0)
+  const [voteSuccessful, setVoteSuccessful] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -25,9 +26,11 @@ const Article = () => {
       .then(({ article }) => {
         setArticle(article)
         setVotes(article.votes)
+        setVoteSuccessful(true)
       })
       .catch(() => {
         setVotes((a) => a - num)
+        setVoteSuccessful(false)
       })
   }
 
@@ -56,6 +59,9 @@ const Article = () => {
           Upvote
         </button>
         <h3>{votes} votes</h3>
+        <p id="voteUnsuccessful" hidden={voteSuccessful}>
+          Failed to send vote
+        </p>
         <button
           id="decreaseVotes"
           className="voteButton"

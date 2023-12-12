@@ -10,10 +10,15 @@
   text-align: center;
 }
 
+.voteButton {
+  margin: 2px;
+}
+
 #voteSection > h3 {
   margin: 0px;
 }
 
-.voteButton {
+#voteUnsuccessful {
+  color: rgb(235, 7, 7);
   margin: 2px;
 }
