@@ -1,0 +1,11 @@
+#commentForm {
+    display: flex;
+    flex-flow: column;
+}
+
+#postCommentButton {
+    max-width: 80%;
+    align-self: flex-start;
+    text-align: center;
+    margin-top: 4px;
+}
