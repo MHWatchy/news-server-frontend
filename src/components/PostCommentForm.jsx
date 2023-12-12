@@ -13,7 +13,6 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
 
   function handleChange(e) {
     setCommentValue(e.target.value)
-    
   }
 
   function handleSubmit(e) {

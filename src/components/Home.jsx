@@ -24,7 +24,7 @@ const Home = () => {
       <section id="filtersBar">Filters</section>
       <ul id="articleList">
         {articles.map((article) => {
-          return <ArticleCard article={article} key={article.article_id}/>
+          return <ArticleCard article={article} key={article.article_id} />
         })}
       </ul>
     </section>
