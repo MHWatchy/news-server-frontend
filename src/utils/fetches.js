@@ -10,9 +10,10 @@ export const getSingleArticle = (id) => {
   })
 }
 
-export const getArticles = ({ topic }) => {
+export const getArticles = ({ topic, order, sort_by }) => {
   let url = `/articles`
-  if (topic != "all") url += `?topic=${topic}`
+  if (topic != "all") url += `?topic=${topic}&order=${order}&sortby=${sort_by}`
+  else url += `?order=${order}&sortby=${sort_by}`
   return newsApi.get(url).then(({ data }) => {
     return data
   })

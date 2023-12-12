@@ -1,15 +1,26 @@
 import { useEffect, useState } from "react"
 import "../styles/Home.css"
+import "../styles/Filters.css"
 import { getArticles } from "../utils/fetches"
 import ArticleCard from "./ArticleCard"
 import { useSearchParams } from "react-router-dom"
 import Topics from "./Topics"
+import Order from "./Order"
+import SortBy from "./SortBy"
 
 const Home = () => {
-  const [searchParams, setSearchParams] = useSearchParams({ topic: "all" })
+  const [searchParams, setSearchParams] = useSearchParams({
+    topic: "all",
+    order: "desc",
+    sort_by: "created_at",
+  })
   const [isLoading, setIsLoading] = useState(true)
   const [articles, setArticles] = useState([])
-  const [filters, setFilters] = useState({ topic: searchParams.get("topic") })
+  const [filters, setFilters] = useState({
+    topic: searchParams.get("topic"),
+    order: searchParams.get("order"),
+    sort_by: searchParams.get("sort_by"),
+  })
 
   useEffect(() => {
     getArticles(filters)
@@ -26,8 +37,19 @@ const Home = () => {
   return (
     <section id="home">
       <section id="filtersBar">
-        Filters{" "}
         <Topics
+          filters={filters}
+          setFilters={setFilters}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+        <Order
+          filters={filters}
+          setFilters={setFilters}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+        <SortBy
           filters={filters}
           setFilters={setFilters}
           searchParams={searchParams}

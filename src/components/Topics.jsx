@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react"
 import { getTopics } from "../utils/fetches"
-import { Link } from "react-router-dom"
 
 const Topics = ({ filters, setFilters, searchParams, setSearchParams }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [topics, setTopics] = useState([])
 
-  function handleChange(e, key) {
-    setFilters({ ...filters, [key]: e.target.value })
-    setSearchParams({ ...searchParams, [key]: e.target.value })
+  function handleChange(e) {
+    setFilters({ ...filters, topic: e.target.value })
+    setSearchParams({ ...searchParams, topic: e.target.value })
   }
 
   useEffect(() => {
@@ -21,30 +20,16 @@ const Topics = ({ filters, setFilters, searchParams, setSearchParams }) => {
   if (isLoading) return <>loading...</>
 
   return (
-    <form>
-      <select
-        id="topicSelector"
-        onChange={(e) => {
-          handleChange(e, "topic")
-        }}
-      >
+    <form className="filterForm">
+      <select id="topicSelector" onChange={handleChange}>
         <option value={"all"}>All Topics</option>
         {topics.map((topic) => {
-          if (topic.slug === searchParams.get("topic")) {
-            return (
-              <option value={topic.slug} key={topic.slug} selected>
-                {" "}
-                {topic.slug}{" "}
-              </option>
-            )
-          } else {
-            return (
-              <option value={topic.slug} key={topic.slug}>
-                {" "}
-                {topic.slug}{" "}
-              </option>
-            )
-          }
+          return (
+            <option value={topic.slug} key={topic.slug}>
+              {" "}
+              {topic.slug}{" "}
+            </option>
+          )
         })}
       </select>
     </form>
