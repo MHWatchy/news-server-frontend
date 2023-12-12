@@ -10,8 +10,10 @@ export const getSingleArticle = (id) => {
   })
 }
 
-export const getArticles = () => {
-  return newsApi.get("/articles").then(({ data }) => {
+export const getArticles = ({ topic }) => {
+  let url = `/articles`
+  if (topic != "all") url += `?topic=${topic}`
+  return newsApi.get(url).then(({ data }) => {
     return data
   })
 }
@@ -46,6 +48,12 @@ export const postComment = (id, commentData, username) => {
 
 export const deleteComment = (id) => {
   return newsApi.delete(`/comments/${id}`).then((data) => {
+    return data
+  })
+}
+
+export const getTopics = () => {
+  return newsApi.get("/topics").then(({ data }) => {
     return data
   })
 }
