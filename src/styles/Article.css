@@ -3,3 +3,17 @@
   max-width: 540px;
   height: auto;
 }
+
+#voteSection {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+#voteSection > h3 {
+  margin: 0px;
+}
+
+.voteButton {
+  margin: 2px;
+}

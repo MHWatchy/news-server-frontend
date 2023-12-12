@@ -22,7 +22,6 @@ export const patchArticleVotes = (id, vote) => {
   }
   let url = `/articles/${id}`
   return newsApi.patch(url, patchData).then(({ data }) => {
-    console.log("new votes", data.article.votes)
     return data
   })
 }

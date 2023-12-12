@@ -6,6 +6,7 @@ import { getSingleArticle, patchArticleVotes } from "../utils/fetches"
 const Article = () => {
   const { article_id } = useParams()
   const [article, setArticle] = useState({})
+  const [votes, setVotes] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -13,19 +14,24 @@ const Article = () => {
       const date = new Date(article.created_at)
       article = { ...article, created_at: date.toUTCString() }
       setArticle(article)
+      setVotes(article.votes)
       setIsLoading(false)
     })
   }, [])
 
   const sendVote = (num) => {
-    patchArticleVotes(article_id, num).then(({article})=>{
-      
-    }).catch((err)=>{
-      console.log(err)
-    })
+    setVotes((a) => a + num)
+    patchArticleVotes(article_id, num)
+      .then(({ article }) => {
+        setArticle(article)
+        setVotes(article.votes)
+      })
+      .catch(() => {
+        setVotes((a) => a - num)
+      })
   }
 
-  if (isLoading) return <>loading...</>
+  if (isLoading) return <h1>loading...</h1>
 
   return (
     <section>
@@ -39,8 +45,7 @@ const Article = () => {
         alt={`cover image for the article ${article.title}`}
       />
       <p>{article.body}</p>
-      <h3>{article.votes} votes</h3>
-      <section id="buttonSection">
+      <section id="voteSection">
         <button
           id="increaseVotes"
           className="voteButton"
@@ -48,8 +53,9 @@ const Article = () => {
             sendVote(1)
           }}
         >
-          +
+          Upvote
         </button>
+        <h3>{votes} votes</h3>
         <button
           id="decreaseVotes"
           className="voteButton"
@@ -57,7 +63,7 @@ const Article = () => {
             sendVote(-1)
           }}
         >
-          -
+          Downvote
         </button>
       </section>
     </section>
