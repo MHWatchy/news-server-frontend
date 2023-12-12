@@ -4,6 +4,31 @@
   height: auto;
 }
 
+#topic {
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+#title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#author {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#dateCreated {
+  font-size: 16px;
+}
+
+#votes {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px;
+}
+
 #voteSection {
   display: flex;
   flex-flow: column;
@@ -12,10 +37,6 @@
 
 .voteButton {
   margin: 2px;
-}
-
-#voteSection > h3 {
-  margin: 0px;
 }
 
 #voteUnsuccessful {

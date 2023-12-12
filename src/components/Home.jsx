@@ -17,7 +17,7 @@ const Home = () => {
       })
   }, [])
 
-  if (isLoading) return <>loading...</>
+  if (isLoading) return <h1>loading...</h1>
 
   return (
     <section id="home">

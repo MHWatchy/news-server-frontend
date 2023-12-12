@@ -1,0 +1,15 @@
+.commentCard {
+  border: 2px solid black;
+  width: 80%;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+.commentCard > h3 {
+  margin-top: 0px;
+}
+
+.commentCard > p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}

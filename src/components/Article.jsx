@@ -1,7 +1,10 @@
 import "../styles/Article.css"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
+
 import { getSingleArticle, patchArticleVotes } from "../utils/fetches"
+
+import Comments from "./Comments"
 
 const Article = () => {
   const { article_id } = useParams()
@@ -38,16 +41,17 @@ const Article = () => {
 
   return (
     <section>
-      <h3>{article.topic}</h3>
-      <h1>{article.title}</h1>
-      <h2>by {article.author}</h2>
-      <h3>{article.created_at}</h3>
+      <p id="topic">{article.topic}</p>
+      <p id="title">{article.title}</p>
+      <p id="author">by {article.author}</p>
+      <p id="dateCreated">{article.created_at}</p>
       <img
         id="articleCover"
         src={article.article_img_url}
         alt={`cover image for the article ${article.title}`}
       />
       <p>{article.body}</p>
+      
       <section id="voteSection">
         <button
           id="increaseVotes"
@@ -58,7 +62,7 @@ const Article = () => {
         >
           Upvote
         </button>
-        <h3>{votes} votes</h3>
+        <p id="votes">{votes} votes</p>
         <p id="voteUnsuccessful" hidden={voteSuccessful}>
           Something went wrong...
         </p>
@@ -72,6 +76,8 @@ const Article = () => {
           Downvote
         </button>
       </section>
+
+      <Comments />
     </section>
   )
 }
