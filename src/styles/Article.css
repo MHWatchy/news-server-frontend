@@ -3,3 +3,27 @@
   max-width: 540px;
   height: auto;
 }
+
+#topic {
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+#title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#author {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#dateCreated {
+  font-size: 16px;
+}
+
+#votes {
+  font-size: 20px;
+  font-weight: bold;
+}
