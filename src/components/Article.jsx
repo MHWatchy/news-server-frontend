@@ -60,7 +60,7 @@ const Article = () => {
         </button>
         <h3>{votes} votes</h3>
         <p id="voteUnsuccessful" hidden={voteSuccessful}>
-          Failed to send vote
+          Something went wrong...
         </p>
         <button
           id="decreaseVotes"
