@@ -9,25 +9,30 @@ const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams({ topic: "all" })
   const [isLoading, setIsLoading] = useState(true)
   const [articles, setArticles] = useState([])
-  const filters = searchParams
+  const [filters, setFilters] = useState({ topic: searchParams.get("topic") })
 
   useEffect(() => {
-    console.log(filters)
-    getArticles(searchParams)
+    getArticles(filters)
       .then(({ articles }) => {
         setArticles(articles)
       })
       .finally(() => {
         setIsLoading(false)
       })
-  }, [searchParams])
+  }, [filters])
 
   if (isLoading) return <h1>loading...</h1>
 
   return (
     <section id="home">
       <section id="filtersBar">
-        Filters <Topics searchParams={searchParams} setSearchParams={setSearchParams}/>
+        Filters{" "}
+        <Topics
+          filters={filters}
+          setFilters={setFilters}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
       </section>
       <ul id="articleList">
         {articles.map((article) => {
