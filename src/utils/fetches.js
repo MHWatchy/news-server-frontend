@@ -10,8 +10,11 @@ export const getSingleArticle = (id) => {
   })
 }
 
-export const getArticles = () => {
-  return newsApi.get("/articles").then(({ data }) => {
+export const getArticles = ({ topic }) => {
+  console.log(topic)
+  let url = `/articles`
+  if (topic!="all") url += `?topic=${topic}`
+  return newsApi.get(url).then(({ data }) => {
     return data
   })
 }
