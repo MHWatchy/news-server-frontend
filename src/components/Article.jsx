@@ -51,7 +51,7 @@ const Article = () => {
         alt={`cover image for the article ${article.title}`}
       />
       <p>{article.body}</p>
-      
+
       <section id="voteSection">
         <button
           id="increaseVotes"
@@ -63,7 +63,11 @@ const Article = () => {
           Upvote
         </button>
         <p id="votes">{votes} votes</p>
-        <p id="voteUnsuccessful" hidden={voteSuccessful}>
+        <p
+          id="voteUnsuccessful"
+          className="errorMessage"
+          hidden={voteSuccessful}
+        >
           Something went wrong...
         </p>
         <button
