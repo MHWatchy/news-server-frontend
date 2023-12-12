@@ -5,13 +5,23 @@ const newsApi = axios.create({
 })
 
 export const getSingleArticle = (id) => {
-  return newsApi.get(`/articles/${id}`).then(({data}) => {
-return data
+  return newsApi.get(`/articles/${id}`).then(({ data }) => {
+    return data
   })
 }
 
 export const getArticles = () => {
   return newsApi.get("/articles").then(({ data }) => {
+    return data
+  })
+}
+
+export const patchArticleVotes = (id, vote) => {
+  const patchData = {
+    inc_votes: vote,
+  }
+  let url = `/articles/${id}`
+  return newsApi.patch(url, patchData).then(({ data }) => {
     return data
   })
 }

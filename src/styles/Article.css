@@ -26,4 +26,20 @@
 #votes {
   font-size: 20px;
   font-weight: bold;
+  margin: 0px;
+}
+
+#voteSection {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+.voteButton {
+  margin: 2px;
+}
+
+#voteUnsuccessful {
+  color: rgb(235, 7, 7);
+  margin: 2px;
 }
