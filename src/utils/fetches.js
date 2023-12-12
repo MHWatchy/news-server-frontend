@@ -31,3 +31,15 @@ export const getArticleComments = (id) => {
     return data
   })
 }
+
+export const postComment = (id, commentData, username) => {
+  const newComment = {
+    username: username,
+    body: commentData,
+  }
+  return newsApi
+    .post(`/articles/${id}/comments`, newComment)
+    .then(({ data }) => {
+      return data
+    })
+}
