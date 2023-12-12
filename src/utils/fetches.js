@@ -43,3 +43,9 @@ export const postComment = (id, commentData, username) => {
       return data
     })
 }
+
+export const getTopics = () => {
+  return newsApi.get("/topics").then(({ data }) => {
+    return data
+  })
+}
