@@ -45,9 +45,9 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
         </label>
         <button id="postCommentButton">Post Comment</button>
       </form>
-      <section id="optimisticComment" className="commentList">
-        {!commentSuccessful ? <p className="errorMessage">Something went wrong... </p> : null}
-      </section>
+      {!commentSuccessful ? (
+        <p className="errorMessage">Something went wrong... </p>
+      ) : null}
     </>
   )
 }
