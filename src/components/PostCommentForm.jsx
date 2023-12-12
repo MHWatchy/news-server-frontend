@@ -26,6 +26,7 @@ const PostCommentForm = ({ addingComment, setAddingComment }) => {
           body: commentValue,
           votes: 0,
         })
+        setCommentValue("")
         setAddingComment(true)
         setCommentSuccessful(true)
       })
