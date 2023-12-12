@@ -16,13 +16,15 @@ const Comments = () => {
     })
   }, [])
 
-  if (isLoading) return <>loading...</>
+  if (isLoading) return <h1>loading...</h1>
 
   return (
     <ul id="commentList">
-      {comments.map((comment) => {
-        return <CommentCard comment={comment} key={comment.comment_id} />
-      })}
+      {!comments.length
+        ? "No Comments"
+        : comments.map((comment) => {
+            return <CommentCard comment={comment} key={comment.comment_id} />
+          })}
     </ul>
   )
 }
