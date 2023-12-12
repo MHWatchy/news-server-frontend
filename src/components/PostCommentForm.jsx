@@ -5,10 +5,9 @@ import { postComment } from "../utils/fetches"
 import { useParams } from "react-router"
 import CommentCard from "./CommentCard"
 
-const PostCommentForm = ({ addingComment, setAddingComment }) => {
+const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
   const { user, setUser } = useContext(UserContext)
   const [commentValue, setCommentValue] = useState("")
-  const [fakeComment, setFakeComment] = useState({})
   const [commentSuccessful, setCommentSuccessful] = useState(true)
   const { article_id } = useParams()
 
@@ -18,21 +17,19 @@ const PostCommentForm = ({ addingComment, setAddingComment }) => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    postComment(article_id, commentValue, user.username)
-      .then((data) => {
-        setFakeComment({
-          author: user.username,
-          created_at: Date.now(),
-          body: commentValue,
-          votes: 0,
+    if (!commentValue) {
+      setCommentSuccessful(false)
+    } else {
+      postComment(article_id, commentValue, user.username)
+        .then((data) => {
+          setCommentValue("")
+          setCommentSuccessful(true)
+          setRefreshComments(!refreshComments)
         })
-        setCommentValue("")
-        setAddingComment(true)
-        setCommentSuccessful(true)
-      })
-      .catch((err) => {
-        setCommentSuccessful(false)
-      })
+        .catch((err) => {
+          setCommentSuccessful(false)
+        })
+    }
   }
 
   return (
@@ -49,11 +46,7 @@ const PostCommentForm = ({ addingComment, setAddingComment }) => {
         <button id="postCommentButton">Post Comment</button>
       </form>
       <section id="optimisticComment" className="commentList">
-        {!commentSuccessful ? (
-          <p>Something went wrong... </p>
-        ) : !addingComment ? null : (
-          <CommentCard comment={fakeComment} key={commentValue} />
-        )}
+        {!commentSuccessful ? <p className="errorMessage">Something went wrong... </p> : null}
       </section>
     </>
   )

@@ -8,22 +8,21 @@ import PostCommentForm from "./PostCommentForm"
 const Comments = () => {
   const { article_id } = useParams()
   const [comments, setComments] = useState([])
-  const [addingComment, setAddingComment] = useState(false)
+  const [refreshComments, setRefreshComments] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getArticleComments(article_id).then(({ comments }) => {
       setComments(comments)
-      setAddingComment(false)
       setIsLoading(false)
     })
-  }, [])
+  }, [refreshComments])
 
   if (isLoading) return <h1>loading...</h1>
 
   return (
     <>
-      <PostCommentForm addingComment={addingComment} setAddingComment={setAddingComment}/>
+      <PostCommentForm refreshComments={refreshComments} setRefreshComments={setRefreshComments}/>
       <ul className="commentList">
         {!comments.length
           ? "No Comments"
