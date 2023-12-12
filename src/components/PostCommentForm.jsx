@@ -13,6 +13,7 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
 
   function handleChange(e) {
     setCommentValue(e.target.value)
+    
   }
 
   function handleSubmit(e) {
@@ -36,8 +37,9 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
     <>
       <form id="commentForm" onSubmit={handleSubmit}>
         <label>
-          Comment:{" "}
+          Comment*:{" "}
           <input
+            type="text"
             placeholder="new comment..."
             value={commentValue}
             onChange={handleChange}
