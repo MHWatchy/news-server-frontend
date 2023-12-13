@@ -12,8 +12,8 @@ export const getSingleArticle = (id) => {
 
 export const getArticles = ({ topic, order, sortby }) => {
   let url = `/articles`
-  const params = { topic, order, sortby}
-  return newsApi.get(url, {params}).then(({ data }) => {
+  const params = { topic, order, sortby }
+  return newsApi.get(url, { params }).then(({ data }) => {
     return data
   })
 }
