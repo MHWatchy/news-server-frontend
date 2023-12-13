@@ -28,23 +28,14 @@ const Topics = ({ filters, setFilters, searchParams, setSearchParams }) => {
           handleChange(e, "topic")
         }}
       >
-        <option value={"all"}>All Topics</option>
+        <option value={""}>All Topics</option>
         {topics.map((topic) => {
-          if (topic.slug === searchParams.get("topic")) {
-            return (
-              <option value={topic.slug} key={topic.slug} selected>
-                {" "}
-                {topic.slug}{" "}
-              </option>
-            )
-          } else {
-            return (
-              <option value={topic.slug} key={topic.slug}>
-                {" "}
-                {topic.slug}{" "}
-              </option>
-            )
-          }
+          return (
+            <option value={topic.slug} key={topic.slug}>
+              {" "}
+              {topic.slug}{" "}
+            </option>
+          )
         })}
       </select>
     </form>

@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom"
 import Topics from "./Topics"
 
 const Home = () => {
-  const [searchParams, setSearchParams] = useSearchParams({ topic: "all" })
+  const [searchParams, setSearchParams] = useSearchParams({ topic: "" })
   const [isLoading, setIsLoading] = useState(true)
   const [articles, setArticles] = useState([])
   const [filters, setFilters] = useState({ topic: searchParams.get("topic") })
