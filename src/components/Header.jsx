@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <section id="header">
       <Link to={"/"}>Home</Link>
-      <h1>User</h1>
+      <Link to={"/user"}>User</Link>
     </section>
   )
 }

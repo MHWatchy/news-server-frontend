@@ -5,6 +5,8 @@ import Home from "./components/Home"
 import Article from "./components/Article"
 import NoPath from "./components/NoPath"
 import RedirectArticles from "./components/RedirectArticles"
+import User from "./components/User"
+import Login from "./components/Login"
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
           <Route path="/" element={<RedirectArticles />} />
           <Route path="/articles" element={<Home />} />
           <Route path="/articles/:article_id" element={<Article />} />
-          <Route path="*" element={<NoPath/>} />
+          <Route path="/user" element={<User />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NoPath />} />
         </Routes>
       </BrowserRouter>
     </main>
