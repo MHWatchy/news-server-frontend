@@ -1,7 +1,7 @@
 const SortBy = ({ filters, setFilters, searchParams, setSearchParams }) => {
   function handleChange(e) {
-    setFilters({ ...filters, sort_by: e.target.value })
-    setSearchParams({ ...searchParams, sort_by: e.target.value })
+    setFilters({ ...filters, sortby : e.target.value })
+    setSearchParams(filters)
   }
 
   return (

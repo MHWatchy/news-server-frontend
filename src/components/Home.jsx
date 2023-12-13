@@ -10,16 +10,16 @@ import SortBy from "./SortBy"
 
 const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams({
-    topic: "all",
+    topic: "",
     order: "desc",
-    sort_by: "created_at",
+    sortby: "created_at",
   })
   const [isLoading, setIsLoading] = useState(true)
   const [articles, setArticles] = useState([])
   const [filters, setFilters] = useState({
     topic: searchParams.get("topic"),
     order: searchParams.get("order"),
-    sort_by: searchParams.get("sort_by"),
+    sortby: searchParams.get("sortby"),
   })
 
   useEffect(() => {

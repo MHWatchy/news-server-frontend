@@ -10,11 +10,13 @@ export const getSingleArticle = (id) => {
   })
 }
 
-export const getArticles = ({ topic, order, sort_by }) => {
+export const getArticles = ({ topic, order, sortby }) => {
   let url = `/articles`
-  if (topic != "all") url += `?topic=${topic}&order=${order}&sortby=${sort_by}`
-  else url += `?order=${order}&sortby=${sort_by}`
-  return newsApi.get(url).then(({ data }) => {
+  // if (topic != "all") url += `?topic=${topic}&order=${order}&sortby=${sortby}`
+  // else url += `?order=${order}&sortby=${sortby}`
+  const params = { topic, order, sortby}
+  console.log(params)
+  return newsApi.get(url, {params}).then(({ data }) => {
     return data
   })
 }

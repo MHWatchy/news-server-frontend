@@ -1,7 +1,7 @@
 const Order = ({ filters, setFilters, searchParams, setSearchParams }) => {
   function handleChange(e) {
     setFilters({ ...filters, order: e.target.value })
-    setSearchParams({ ...searchParams, order: e.target.value })
+    setSearchParams(filters)
   }
 
   return (

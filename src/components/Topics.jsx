@@ -7,7 +7,7 @@ const Topics = ({ filters, setFilters, searchParams, setSearchParams }) => {
 
   function handleChange(e) {
     setFilters({ ...filters, topic: e.target.value })
-    setSearchParams({ ...searchParams, topic: e.target.value })
+    setSearchParams(filters)
   }
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Topics = ({ filters, setFilters, searchParams, setSearchParams }) => {
   return (
     <form className="filterForm">
       <select id="topicSelector" onChange={handleChange}>
-        <option value={"all"}>All Topics</option>
+        <option value={""}>All Topics</option>
         {topics.map((topic) => {
           return (
             <option value={topic.slug} key={topic.slug}>
