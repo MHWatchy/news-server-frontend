@@ -13,7 +13,7 @@ export const getSingleArticle = (id) => {
 export const getArticles = ({ topic }) => {
   let url = `/articles`
   const params = { topic }
-  return newsApi.get(url, {params}).then(({ data }) => {
+  return newsApi.get(url, { params }).then(({ data }) => {
     return data
   })
 }
@@ -48,6 +48,12 @@ export const postComment = (id, commentData, username) => {
 
 export const getTopics = () => {
   return newsApi.get("/topics").then(({ data }) => {
+    return data
+  })
+}
+
+export const deleteComment = (id) => {
+  return newsApi.delete(`/comments/${id}`).then((data) => {
     return data
   })
 }
