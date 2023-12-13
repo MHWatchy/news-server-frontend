@@ -1,6 +1,7 @@
 # Deployed Site 
 
 Link to deployed site: https://mhwatchy-news-site.netlify.app/ 
+
 Link to api for site: https://news-server-k1ka.onrender.com/api
 
 # Summary 
