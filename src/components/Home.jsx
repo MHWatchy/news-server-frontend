@@ -33,7 +33,8 @@ const Home = () => {
         if (err.code === "ERR_NETWORK") {
           setErrorText("No connection")
         } else if (err.code === "ERR_BAD_REQUEST") {
-          setErrorText("No articles found")
+          console.log(err)
+          setErrorText(err.response.data.msg)
         } else {
           setErrorText("Something went wrong")
         }
