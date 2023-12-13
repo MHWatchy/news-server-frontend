@@ -40,8 +40,7 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
       <form id="commentForm" onSubmit={handleSubmit}>
         <label>
           Comment*:{" "}
-          <input
-            type="text"
+          <textarea
             placeholder="new comment..."
             value={commentValue}
             onChange={handleChange}
