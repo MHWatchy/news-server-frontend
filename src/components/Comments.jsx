@@ -13,20 +13,31 @@ const Comments = () => {
   const [comments, setComments] = useState([])
   const [refreshComments, setRefreshComments] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [errorText, setErrorText] = useState("")
 
   useEffect(() => {
     if (!!user) {
       setUsername(user.username)
     }
-    getArticleComments(article_id).then(({ comments }) => {
-      setComments(comments)
-      setIsLoading(false)
-    })
+    getArticleComments(article_id)
+      .then(({ comments }) => {
+        setComments(comments)
+      })
+      .catch((err) => {
+        if (err.code === "ERR_NETWORK") {
+          setErrorText("No connection")
+        } else {
+          setErrorText("Something went wrong")
+        }
+      })
+      .finally(() => [setIsLoading(false)])
   }, [refreshComments])
 
   if (isLoading) return <h1>loading...</h1>
 
-  return (
+  return errorText ? (
+    <p className="errorMessage">{errorText}</p>
+  ) : (
     <>
       <PostCommentForm
         refreshComments={refreshComments}

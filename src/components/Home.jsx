@@ -14,18 +14,30 @@ const Home = () => {
     order: "desc",
     sortby: "created_at",
   })
-  const [isLoading, setIsLoading] = useState(true)
-  const [articles, setArticles] = useState([])
   const [filters, setFilters] = useState({
     topic: searchParams.get("topic"),
     order: searchParams.get("order"),
     sortby: searchParams.get("sortby"),
   })
+  const [articles, setArticles] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [errorText, setErrorText] = useState("")
 
   useEffect(() => {
     getArticles(filters)
       .then(({ articles }) => {
+        setErrorText("")
         setArticles(articles)
+      })
+      .catch((err) => {
+        if (err.code === "ERR_NETWORK") {
+          setErrorText("No connection")
+        } else if (err.code === "ERR_BAD_REQUEST") {
+          console.log(err)
+          setErrorText(err.response.data.msg)
+        } else {
+          setErrorText("Something went wrong")
+        }
       })
       .finally(() => {
         setIsLoading(false)
@@ -56,11 +68,15 @@ const Home = () => {
           setSearchParams={setSearchParams}
         />
       </section>
-      <ul id="articleList">
-        {articles.map((article) => {
-          return <ArticleCard article={article} key={article.article_id} />
-        })}
-      </ul>
+      {errorText ? (
+        <p className="errorMessage">{errorText}</p>
+      ) : (
+        <ul id="articleList">
+          {articles.map((article) => {
+            return <ArticleCard article={article} key={article.article_id} />
+          })}
+        </ul>
+      )}
     </section>
   )
 }

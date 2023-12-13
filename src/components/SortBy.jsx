@@ -1,4 +1,4 @@
-const SortBy = ({ filters, setFilters, searchParams, setSearchParams }) => {
+const SortBy = ({ filters, setFilters, setSearchParams }) => {
   function handleChange(e) {
     setFilters({ ...filters, sortby : e.target.value })
     setSearchParams(filters)

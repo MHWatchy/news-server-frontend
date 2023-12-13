@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getTopics } from "../utils/fetches"
 
-const Topics = ({ filters, setFilters, searchParams, setSearchParams }) => {
+const Topics = ({ filters, setFilters, setSearchParams }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [topics, setTopics] = useState([])
 
@@ -14,10 +14,14 @@ const Topics = ({ filters, setFilters, searchParams, setSearchParams }) => {
   }, [filters])
 
   useEffect(() => {
-    getTopics().then(({ topics }) => {
-      setTopics(topics)
-      setIsLoading(false)
-    })
+    getTopics()
+      .then(({ topics }) => {
+        setTopics(topics)
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        console.log("The impossible error from topics.jsx:", err)
+      })
   }, [])
 
   if (isLoading) return <>loading...</>

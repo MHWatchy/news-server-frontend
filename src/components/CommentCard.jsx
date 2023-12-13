@@ -8,7 +8,7 @@ const CommentCard = ({
   refreshComments,
   setRefreshComments,
 }) => {
-  const [deleteSuccessful, setDeleteSuccessful] = useState(true)
+  const [errorText, setErrorText] = useState("")
   const date = new Date(comment.created_at)
   comment = { ...comment, created_at: date.toUTCString() }
 
@@ -17,10 +17,14 @@ const CommentCard = ({
     deleteComment(comment.comment_id)
       .then((data) => {
         setRefreshComments(!refreshComments)
-        setDeleteSuccessful(true)
+        setErrorText("")
       })
-      .catch(() => {
-        setDeleteSuccessful(false)
+      .catch((err) => {
+        if (err.code === "ERR_NETWORK") {
+          setErrorText("No connection")
+        } else {
+          setErrorText("Something went wrong")
+        }
       })
   }
 
@@ -33,9 +37,7 @@ const CommentCard = ({
       {username === comment.author ? (
         <button onClick={handleDelete}>Delete</button>
       ) : null}
-      <p className="errorMessage" hidden={deleteSuccessful}>
-        Something went wrong...
-      </p>
+      {!errorText ? null : <p className="errorMessage">{errorText}</p>}
     </li>
   )
 }
