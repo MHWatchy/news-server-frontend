@@ -1,4 +1,4 @@
-const Order = ({ filters, setFilters, searchParams, setSearchParams }) => {
+const Order = ({ filters, setFilters, setSearchParams }) => {
   function handleChange(e) {
     setFilters({ ...filters, order: e.target.value })
     setSearchParams(filters)
