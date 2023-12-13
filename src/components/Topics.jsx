@@ -7,8 +7,11 @@ const Topics = ({ filters, setFilters, searchParams, setSearchParams }) => {
 
   function handleChange(e) {
     setFilters({ ...filters, topic: e.target.value })
-    setSearchParams(filters)
   }
+
+  useEffect(() => {
+    setSearchParams(filters)
+  }, [filters])
 
   useEffect(() => {
     getTopics().then(({ topics }) => {
