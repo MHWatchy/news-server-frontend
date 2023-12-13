@@ -10,9 +10,9 @@ export const getSingleArticle = (id) => {
   })
 }
 
-export const getArticles = ({ topic }) => {
+export const getArticles = ({ topic, order, sortby }) => {
   let url = `/articles`
-  const params = { topic }
+  const params = { topic, order, sortby }
   return newsApi.get(url, { params }).then(({ data }) => {
     return data
   })
@@ -46,14 +46,14 @@ export const postComment = (id, commentData, username) => {
     })
 }
 
-export const getTopics = () => {
-  return newsApi.get("/topics").then(({ data }) => {
+export const deleteComment = (id) => {
+  return newsApi.delete(`/comments/${id}`).then((data) => {
     return data
   })
 }
 
-export const deleteComment = (id) => {
-  return newsApi.delete(`/comments/${id}`).then((data) => {
+export const getTopics = () => {
+  return newsApi.get("/topics").then(({ data }) => {
     return data
   })
 }
