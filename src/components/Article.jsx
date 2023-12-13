@@ -42,6 +42,8 @@ const Article = () => {
       .catch((err) => {
         if (err.code === "ERR_NETWORK") {
           setErrorTextMain("No connection")
+        } else if (err.response.status === 404) {
+          setErrorTextMain("Article not found")
         } else {
           setErrorTextMain("Something went wrong")
         }
