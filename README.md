@@ -1,10 +1,11 @@
 # Deployed Site 
 
 Link to deployed site: https://mhwatchy-news-site.netlify.app/ 
+Link to api for site: https://news-server-k1ka.onrender.com/api
 
 # Summary 
 
-This app is a site for uploading various news articles relating to certain topics, and allowing other users to comment and vote on them. 
+This app is a site for uploading various news articles relating to certain topics, and allowing other users to comment and vote on them. The home screen presents the user with diferent articles they can click on to navigate to a page showcasing that individual article. From these pages they can comment on and vote on each article. A home button is present at the top of the screen to return back to the home articles page. 
 
 # Back-end Repo 
 

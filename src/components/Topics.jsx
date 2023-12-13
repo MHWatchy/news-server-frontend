@@ -28,7 +28,7 @@ const Topics = ({ filters, setFilters, setSearchParams }) => {
 
   return (
     <form className="filterForm">
-      <select id="topicSelector" onChange={handleChange}>
+      <select id="topicSelector" onChange={handleChange} defaultValue={filters.topic}>
         <option value={""}>All Topics</option>
         {topics.map((topic) => {
           return (
