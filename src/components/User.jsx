@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../contexts/UserContext"
 import "../styles/User.css"
 import { useNavigate } from "react-router"
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router"
 const User = () => {
   const { user, setUser } = useContext(UserContext)
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleLogOut = () => {
     setUser()
@@ -13,10 +14,14 @@ const User = () => {
   }
 
   useEffect(() => {
+    setIsLoading(true)
     if (!user) {
       navigate("/login")
     }
+    setIsLoading(false)
   }, [user])
+
+  if (isLoading) return <h1 className="text loading">loading...</h1>
 
   return (
     <>
@@ -25,11 +30,14 @@ const User = () => {
           id="profilePictureFull"
           src={user.avatar_url}
           alt="user profile picture"
+          className="text"
         />
-        <p>{user.name}</p>
-        <p>{user.username}</p>
+        <p className="text">{user.name}</p>
+        <p className="text">{user.username}</p>
       </section>
-      <button onClick={handleLogOut}>Log Out</button>
+      <button onClick={handleLogOut} className="text">
+        Log Out
+      </button>
     </>
   )
 }

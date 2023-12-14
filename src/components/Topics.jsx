@@ -24,15 +24,15 @@ const Topics = ({ filters, setFilters, setSearchParams }) => {
       })
   }, [])
 
-  if (isLoading) return <>loading...</>
+  if (isLoading) return <h1 className="text loading">loading...</h1>
 
   return (
     <form className="filterForm">
       <select id="topicSelector" className="selector" onChange={handleChange} defaultValue={filters.topic}>
-        <option value={""}>All Topics</option>
+        <option value={""} className="text">All Topics</option>
         {topics.map((topic) => {
           return (
-            <option value={topic.slug} key={topic.slug}>
+            <option value={topic.slug} key={topic.slug} className="text">
               {" "}
               {topic.slug}{" "}
             </option>

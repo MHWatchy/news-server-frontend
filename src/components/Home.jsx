@@ -33,7 +33,6 @@ const Home = () => {
         if (err.code === "ERR_NETWORK") {
           setErrorText("No connection")
         } else if (err.code === "ERR_BAD_REQUEST") {
-          console.log(err)
           setErrorText(err.response.data.msg)
         } else {
           setErrorText("Something went wrong")
@@ -44,7 +43,7 @@ const Home = () => {
       })
   }, [filters])
 
-  if (isLoading) return <h1>loading...</h1>
+  if (isLoading) return <h1 className="text loading">loading...</h1>
 
   return (
     <section id="home">

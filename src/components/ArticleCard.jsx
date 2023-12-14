@@ -8,7 +8,7 @@ const ArticleCard = ({ article }) => {
       className="articleCard"
       style={{ backgroundImage: `url(${article.article_img_url})` }}
     >
-      <h3>{article.title}</h3>
+      <h3 className="text">{article.title}</h3>
     </Link>
   )
 }

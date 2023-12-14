@@ -53,34 +53,45 @@ const Article = () => {
       })
   }, [])
 
-  if (isLoading) return <h1>loading...</h1>
+  if (isLoading) return <h1 className="text loading">loading...</h1>
 
   return errorTextMain ? (
     <p className="errorMessage">{errorTextMain}</p>
   ) : (
-    <section>
-      <p id="topic">{article.topic}</p>
-      <p id="title">{article.title}</p>
-      <p id="author">by {article.author}</p>
-      <p id="dateCreated">{article.created_at}</p>
+    <section id="fullArticleSection">
+      <p id="topic" className="text">
+        {article.topic}
+      </p>
+      <p id="title" className="text">
+        {article.title}
+      </p>
+      <p id="author" className="text">
+        by {article.author}
+      </p>
+      <p id="dateCreated" className="text">
+        {article.created_at}
+      </p>
       <img
         id="articleCover"
+        className="text"
         src={article.article_img_url}
         alt={`cover image for the article ${article.title}`}
       />
-      <p>{article.body}</p>
+      <p className="text">{article.body}</p>
 
       <section id="voteSection">
         <button
           id="increaseVotes"
-          className="voteButton"
+          className="voteButton text"
           onClick={() => {
             sendVote(1)
           }}
         >
           Upvote
         </button>
-        <p id="votes">{votes} votes</p>
+        <p id="votes" className="text">
+          {votes} votes
+        </p>
         {!errorTextVote ? null : (
           <p id="voteUnsuccessful" className="errorMessage">
             {errorTextVote}
@@ -88,7 +99,7 @@ const Article = () => {
         )}
         <button
           id="decreaseVotes"
-          className="voteButton"
+          className="voteButton text"
           onClick={() => {
             sendVote(-1)
           }}

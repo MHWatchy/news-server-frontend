@@ -1,9 +1,10 @@
 body {
-  --misc: #f3ca40ff;
+  --misc: #9BF3F0;
   --text: #272727ff;
-  --secondary-background: #F5E5FC;
-  --border: #EE5622;
-  --background: #F7F0F5;
+  --secondary-background: #f5e5fc;
+  --border: #834D93;
+  --background: #F1E4ED;
+  background-color: var(--background);
 }
 
 main {
@@ -20,11 +21,15 @@ main {
   bottom: 0px;
   left: 0px;
   right: 0px;
+  text-align: center;
 }
 
-
+.text {
+  color: var(--text);
+}
 
 button {
+  background-color: var(--misc);
   max-width: 5rem;
 }
 

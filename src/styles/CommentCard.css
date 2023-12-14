@@ -1,8 +1,10 @@
 .commentCard {
-  border: 2px solid black;
+  background-color: var(--secondary-background);
+  border: 2px solid var(--border);
   width: 80%;
   margin-top: 1em;
   padding: 1em;
+  text-align: start;
 }
 
 .commentCard > h3 {

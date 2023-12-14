@@ -40,7 +40,7 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
   return (
     <>
       <form id="commentForm" onSubmit={handleSubmit}>
-        <label>
+        <label className="text">
           Comment*:{" "}
           <textarea
             placeholder="new comment..."
@@ -48,7 +48,7 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
             onChange={handleChange}
           />
         </label>
-        <button id="postCommentButton">Post Comment</button>
+        <button id="postCommentButton" className="text">Post Comment</button>
       </form>
       {!errorText ? null : <p className="errorMessage">{errorText}</p>}
     </>

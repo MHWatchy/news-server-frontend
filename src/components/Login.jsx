@@ -9,6 +9,7 @@ const Login = () => {
   const [usernameInput, setUsernameInput] = useState("")
   const [isValidating, setIsValidating] = useState(false)
   const [errorText, setErrorText] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleInputChange = (e) => {
     setUsernameInput(e.target.value)
@@ -19,12 +20,10 @@ const Login = () => {
     setIsValidating(true)
     getUser(usernameInput)
       .then((loginUser) => {
-        console.log(loginUser)
         setUser(loginUser.user)
         navigate("/user")
       })
       .catch((err) => {
-        console.log(err)
         setIsValidating(false)
         if (err.code === "ERR_NETWORK") {
           setErrorText("No connection")
@@ -37,15 +36,19 @@ const Login = () => {
   }
 
   useEffect(() => {
+    setIsLoading(true)
     if (user) {
       navigate("/user")
     }
+    setIsLoading(false)
   }, [user])
+
+  if (isLoading) return<h1 className="text loading">loading...</h1>
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="text">
           Username:{" "}
           <input
             id="usernameInput"
@@ -55,7 +58,7 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </label>
-        <button disabled={isValidating}>login</button>
+        <button disabled={isValidating} className="text">login</button>
       </form>
       {!errorText ? null : <p className="errorMessage">{errorText}</p>}
     </>

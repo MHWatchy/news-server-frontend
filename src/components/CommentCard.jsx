@@ -30,12 +30,12 @@ const CommentCard = ({
 
   return (
     <li className="commentCard">
-      <h3>{comment.author}</h3>
-      <p>{comment.created_at}</p>
-      <p>{comment.body}</p>
-      <p>{comment.votes} votes</p>
+      <h3 className="text">{comment.author}</h3>
+      <p className="text">{comment.created_at}</p>
+      <p className="text">{comment.body}</p>
+      <p className="text">{comment.votes} votes</p>
       {username === comment.author ? (
-        <button onClick={handleDelete}>Delete</button>
+        <button onClick={handleDelete} className="text">Delete</button>
       ) : null}
       {!errorText ? null : <p className="errorMessage">{errorText}</p>}
     </li>

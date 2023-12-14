@@ -17,8 +17,8 @@ const Header = () => {
 
   return (
     <section id="header">
-      <Link to={"/"}>Home</Link>
-      <Link to={userPath}>User</Link>
+      <Link to={"/"} className="text">Home</Link>
+      <Link to={userPath} className="text">User</Link>
     </section>
   )
 }

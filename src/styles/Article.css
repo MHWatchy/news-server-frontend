@@ -1,3 +1,7 @@
+#fullArticleSection {
+  text-align: start;
+}
+
 #articleCover {
   width: 95%;
   max-width: 540px;
@@ -32,7 +36,6 @@
 #voteSection {
   display: flex;
   flex-flow: column;
-  text-align: center;
 }
 
 .voteButton {
@@ -40,6 +43,5 @@
 }
 
 #voteUnsuccessful {
-  color: rgb(235, 7, 7);
   margin: 2px;
 }

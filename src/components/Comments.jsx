@@ -33,7 +33,7 @@ const Comments = () => {
       .finally(() => [setIsLoading(false)])
   }, [refreshComments])
 
-  if (isLoading) return <h1>loading...</h1>
+  if (isLoading) return <h1 className="text loading">loading...</h1>
 
   return errorText ? (
     <p className="errorMessage">{errorText}</p>
@@ -44,19 +44,21 @@ const Comments = () => {
         setRefreshComments={setRefreshComments}
       />
       <ul className="commentList">
-        {!comments.length
-          ? "No Comments"
-          : comments.map((comment) => {
-              return (
-                <CommentCard
-                  comment={comment}
-                  username={username}
-                  refreshComments={refreshComments}
-                  setRefreshComments={setRefreshComments}
-                  key={comment.comment_id}
-                />
-              )
-            })}
+        {!comments.length ? (
+          <p className="text">"No Comments"</p>
+        ) : (
+          comments.map((comment) => {
+            return (
+              <CommentCard
+                comment={comment}
+                username={username}
+                refreshComments={refreshComments}
+                setRefreshComments={setRefreshComments}
+                key={comment.comment_id}
+              />
+            )
+          })
+        )}
       </ul>
     </>
   )
