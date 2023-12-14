@@ -1,4 +1,14 @@
+body {
+  --misc: #f3ca40ff;
+  --text: #272727ff;
+  --secondary-background: #F5E5FC;
+  --border: #EE5622;
+  --background: #F7F0F5;
+}
+
 main {
+  background-color: var(--background);
+  color: var(--text);
   display: flex;
   flex-flow: column;
   position: absolute;
@@ -11,6 +21,8 @@ main {
   left: 0px;
   right: 0px;
 }
+
+
 
 button {
   max-width: 5rem;

@@ -5,9 +5,10 @@
 #articleList {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 
   list-style: none;
   padding: 0px;
+  
 }

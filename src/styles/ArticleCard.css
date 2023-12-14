@@ -1,13 +1,17 @@
 .articleCard {
+  background-size: cover;
+  background-position: center;
+
   text-align: center;
   width: 40%;
   height: 10em;
-  border: 1px solid black;
+  border: 2px solid var(--border);
   margin: 1em;
 }
 
 .articleCard > h3 {
-  background-color: white;
+  background-color: var(--secondary-background);
+  color: var(--text);
   overflow: hidden;
   max-height: 40%;
   margin: 0px;

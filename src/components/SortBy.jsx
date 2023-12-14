@@ -6,7 +6,7 @@ const SortBy = ({ filters, setFilters, setSearchParams }) => {
 
   return (
     <form className="filterForm">
-      <select id="sortBySelector" onChange={handleChange} defaultValue={filters.sortby}>
+      <select id="sortBySelector" className="selector" onChange={handleChange} defaultValue={filters.sortby}>
         <option value={"created_at"}>Date</option>
         <option value={"votes"}>Votes</option>
         <option value={"author"}>Author</option>

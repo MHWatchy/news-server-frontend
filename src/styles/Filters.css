@@ -2,9 +2,14 @@
   display: flex;
   flex-flow: row;
   justify-content: center;
+  margin-top: 1em;
 }
 
 .filterForm {
   margin-left: 1em;
   margin-right: 1em;
+}
+
+.selector {
+  background-color: var(--misc);
 }

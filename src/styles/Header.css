@@ -1,5 +1,5 @@
 #header {
-  background-color: white;
+  background-color: var(--secondary-background);
 
   display: flex;
   flex-flow: row;
@@ -9,7 +9,7 @@
 
   width: 100%;
   height: 5rem;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid var(--border);
 
   top: 0px;
   left: 0px;
