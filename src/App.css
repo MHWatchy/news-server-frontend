@@ -30,7 +30,9 @@ main {
 
 button {
   background-color: var(--misc);
+  border-color: var(--border);
   max-width: 5rem;
+  border-radius: 10%;
 }
 
 .errorMessage {

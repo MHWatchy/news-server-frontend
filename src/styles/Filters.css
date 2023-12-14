@@ -12,4 +12,5 @@
 
 .selector {
   background-color: var(--misc);
+  border-color: var(--border);
 }

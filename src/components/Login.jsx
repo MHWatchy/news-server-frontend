@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { getUser } from "../utils/fetches"
 import { useNavigate } from "react-router"
 import { UserContext } from "../contexts/UserContext"
+import "../styles/Login.css"
 
 const Login = () => {
   const navigate = useNavigate()
@@ -47,7 +48,7 @@ const Login = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="loginForm">
         <label className="text">
           Username:{" "}
           <input

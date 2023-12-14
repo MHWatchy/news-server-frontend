@@ -34,10 +34,10 @@ const User = () => {
         />
         <p className="text">{user.name}</p>
         <p className="text">{user.username}</p>
+        <button onClick={handleLogOut} className="text">
+          Log Out
+        </button>
       </section>
-      <button onClick={handleLogOut} className="text">
-        Log Out
-      </button>
     </>
   )
 }

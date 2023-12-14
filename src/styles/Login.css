@@ -1,0 +1,11 @@
+#loginForm {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 2em;
+}
+
+#loginForm > button {
+    margin-top: 2em;
+}

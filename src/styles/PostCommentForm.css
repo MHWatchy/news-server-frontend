@@ -3,6 +3,13 @@
   flex-flow: column;
 }
 
+#commentInput {
+  resize: none;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
 #postCommentButton {
   max-width: 80%;
   align-self: flex-start;

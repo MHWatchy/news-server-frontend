@@ -1,6 +1,8 @@
 #header {
   background-color: var(--secondary-background);
 
+  font-size: xx-large;
+
   display: flex;
   flex-flow: row;
   justify-content: space-around;
