@@ -12,6 +12,10 @@ main {
   right: 0px;
 }
 
+button {
+  max-width: 5rem;
+}
+
 .errorMessage {
   color: red;
 }

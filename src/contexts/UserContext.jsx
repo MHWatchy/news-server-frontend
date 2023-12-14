@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
     avatar_url:
       "https://vignette.wikia.nocookie.net/mrmen/images/7/7e/MrMen-Bump.png/revision/latest?cb=20180123225553",
   }
-  const [user, setUser] = useState(hardCodedUser)
+  const [user, setUser] = useState()
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

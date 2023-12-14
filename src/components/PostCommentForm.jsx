@@ -18,6 +18,8 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
     e.preventDefault()
     if (!commentValue) {
       setErrorText("No comment to post")
+    } else if (!user) {
+      setErrorText("Please login first")
     } else {
       postComment(article_id, commentValue, user.username)
         .then(() => {

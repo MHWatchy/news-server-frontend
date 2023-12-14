@@ -57,3 +57,10 @@ export const getTopics = () => {
     return data
   })
 }
+
+export const getUser = (username) => {
+  let url = `/users/${username}`
+  return newsApi.get(url).then(({data})=>{
+    return data
+  })
+}
