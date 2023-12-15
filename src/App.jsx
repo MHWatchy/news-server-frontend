@@ -1,12 +1,12 @@
-import "./App.css"
-import Header from "./components/Header"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Header from "./components/Header"
+import RedirectArticles from "./components/RedirectArticles"
 import Home from "./components/Home"
 import Article from "./components/Article"
-import NoPath from "./components/NoPath"
-import RedirectArticles from "./components/RedirectArticles"
 import User from "./components/User"
 import Login from "./components/Login"
+import NoPath from "./components/NoPath"
+import "./App.css"
 
 function App() {
   return (
