@@ -1,9 +1,9 @@
 body {
-  --misc: #9BF3F0;
+  --misc: #9bf3f0;
   --text: #272727ff;
   --secondary-background: #f5e5fc;
-  --border: #834D93;
-  --background: #F1E4ED;
+  --border: #834d93;
+  --background: #f1e4ed;
   background-color: var(--background);
 }
 
@@ -26,13 +26,27 @@ main {
 
 .text {
   color: var(--text);
+  text-decoration: none;
 }
 
 button {
   background-color: var(--misc);
   border-color: var(--border);
-  max-width: 5rem;
   border-radius: 10%;
+  /* padding: 2px; */
+  max-width: 5rem;
+  transition: all 500ms;
+}
+
+button:disabled {
+  background-color: var(--secondary-background);
+  transform: scale(1.1);
+}
+
+button:hover {
+  box-shadow: 2px 2px 4px var(--secondary-background);
+  box-sizing: border-box;
+  transform: scale(1.1);
 }
 
 .errorMessage {

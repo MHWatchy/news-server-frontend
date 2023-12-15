@@ -1,6 +1,6 @@
 import { UserContext } from "../contexts/UserContext"
 import "../styles/PostCommentForm.css"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { postComment } from "../utils/fetches"
 import { useParams } from "react-router"
 
@@ -9,6 +9,9 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
   const [commentValue, setCommentValue] = useState("")
   const [errorText, setErrorText] = useState("")
   const { article_id } = useParams()
+  const [isValidating, setIsValidating] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [placeholderText, setPlaceholderText] = useState("")
 
   function handleChange(e) {
     setCommentValue(e.target.value)
@@ -16,11 +19,12 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    if (!commentValue) {
-      setErrorText("No comment to post")
-    } else if (!user) {
+    if (!user) {
       setErrorText("Please login first")
+    } else if (!commentValue) {
+      setErrorText("No comment to post")
     } else {
+      setIsValidating(true)
       postComment(article_id, commentValue, user.username)
         .then(() => {
           setCommentValue("")
@@ -34,8 +38,23 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
             setErrorText("Something went wrong")
           }
         })
+        .finally(() => {
+          setIsValidating(false)
+        })
     }
   }
+
+  useEffect(() => {
+    setIsLoading(true)
+    if (!user) {
+      setPlaceholderText("Login to post comments")
+    } else {
+      setPlaceholderText("new comment...")
+    }
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) return <h1 className="text loading">loading...</h1>
 
   return (
     <>
@@ -44,12 +63,13 @@ const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
           Comment*:{" "}
           <textarea
             id="commentInput"
-            placeholder="new comment..."
+            placeholder={placeholderText}
             value={commentValue}
             onChange={handleChange}
+            disabled={!user}
           />
         </label>
-        <button id="postCommentButton" className="text">
+        <button id="postCommentButton" className="text" disabled={isValidating}>
           Post Comment
         </button>
       </form>

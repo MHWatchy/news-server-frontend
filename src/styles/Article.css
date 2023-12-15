@@ -6,6 +6,7 @@
   width: 95%;
   max-width: 540px;
   height: auto;
+  border: 2px solid var(--border);
 }
 
 #topic {

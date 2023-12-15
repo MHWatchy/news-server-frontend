@@ -20,6 +20,7 @@ const CommentCard = ({
         setErrorText("")
       })
       .catch((err) => {
+        e.target.hidden = false
         if (err.code === "ERR_NETWORK") {
           setErrorText("No connection")
         } else {
@@ -30,9 +31,9 @@ const CommentCard = ({
 
   return (
     <li className="commentCard">
-      <h3 className="text">{comment.author}</h3>
+      <p className="text commenter">{comment.author}</p>
       <p className="text">{comment.created_at}</p>
-      <p className="text">{comment.body}</p>
+      <p className="text mainComment">{comment.body}</p>
       <p className="text">{comment.votes} votes</p>
       {username === comment.author ? (
         <button onClick={handleDelete} className="text">Delete</button>

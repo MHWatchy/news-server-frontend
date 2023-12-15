@@ -19,21 +19,28 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setIsValidating(true)
-    getUser(usernameInput)
-      .then((loginUser) => {
-        setUser(loginUser.user)
-        navigate("/user")
-      })
-      .catch((err) => {
-        setIsValidating(false)
-        if (err.code === "ERR_NETWORK") {
-          setErrorText("No connection")
-        } else if (err.response.status === 404) {
-          setErrorText("User does not exist")
-        } else {
-          setErrorText("Something went wrong")
-        }
-      })
+    if (usernameInput === "") {
+      setErrorText("Username required")
+      setIsValidating(false)
+    } else {
+      getUser(usernameInput)
+        .then((loginUser) => {
+          setUser(loginUser.user)
+          navigate("/user")
+        })
+        .catch((err) => {
+          if (err.code === "ERR_NETWORK") {
+            setErrorText("No connection")
+          } else if (err.response.status === 404) {
+            setErrorText("User does not exist")
+          } else {
+            setErrorText("Something went wrong")
+          }
+        })
+        .finally(() => {
+          setIsValidating(false)
+        })
+    }
   }
 
   useEffect(() => {
@@ -44,13 +51,13 @@ const Login = () => {
     setIsLoading(false)
   }, [user])
 
-  if (isLoading) return<h1 className="text loading">loading...</h1>
+  if (isLoading) return <h1 className="text loading">loading...</h1>
 
   return (
     <>
       <form onSubmit={handleSubmit} id="loginForm">
         <label className="text">
-          Username:{" "}
+          Username:*{" "}
           <input
             id="usernameInput"
             type="text"
@@ -59,7 +66,9 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </label>
-        <button disabled={isValidating} className="text">login</button>
+        <button disabled={isValidating} className="text">
+          Login
+        </button>
       </form>
       {!errorText ? null : <p className="errorMessage">{errorText}</p>}
     </>
