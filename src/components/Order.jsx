@@ -6,9 +6,18 @@ const Order = ({ filters, setFilters, setSearchParams }) => {
 
   return (
     <form className="filterForm">
-      <select id="orderSelector" className="selector" onChange={handleChange} defaultValue={filters.order}>
-        <option value={"desc"} className="text">Descending</option>
-        <option value={"asc"} className="text">Ascending</option>
+      <select
+        id="orderSelector"
+        className="selector"
+        onChange={handleChange}
+        defaultValue={filters.order}
+      >
+        <option value={"desc"} className="text">
+          Descending
+        </option>
+        <option value={"asc"} className="text">
+          Ascending
+        </option>
       </select>
     </form>
   )

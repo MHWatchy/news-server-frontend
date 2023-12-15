@@ -7,9 +7,9 @@
 }
 
 #usernameInput {
-    border: 2px solid var(--border);
+  border: 2px solid var(--border);
 }
 
 #loginForm > button {
-    margin-top: 2em;
+  margin-top: 2em;
 }

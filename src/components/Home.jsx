@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import "../styles/Home.css"
-import "../styles/Filters.css"
-import { getArticles } from "../utils/fetches"
-import ArticleCard from "./ArticleCard"
 import { useSearchParams } from "react-router-dom"
+import { getArticles } from "../utils/fetches"
 import Topics from "./Topics"
 import Order from "./Order"
 import SortBy from "./SortBy"
+import ArticleCard from "./ArticleCard"
+import "../styles/Home.css"
+import "../styles/Filters.css"
 
 const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams({

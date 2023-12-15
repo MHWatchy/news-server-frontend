@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react"
+import { useNavigate } from "react-router"
 import { UserContext } from "../contexts/UserContext"
 import "../styles/User.css"
-import { useNavigate } from "react-router"
 
 const User = () => {
-  const { user, setUser } = useContext(UserContext)
   const navigate = useNavigate()
+  const { user, setUser } = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
 
   const handleLogOut = () => {
@@ -32,8 +32,12 @@ const User = () => {
           alt="user profile picture"
           className="text"
         />
-        <p id="realName" className="text">{user.name}</p>
-        <p id="username" className="text">{user.username}</p>
+        <p id="realName" className="text">
+          {user.name}
+        </p>
+        <p id="username" className="text">
+          {user.username}
+        </p>
         <button onClick={handleLogOut} id="logOutButton" className="text">
           Log Out
         </button>

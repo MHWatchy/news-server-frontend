@@ -1,8 +1,8 @@
-import "../styles/Article.css"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { getSingleArticle, patchArticleVotes } from "../utils/fetches"
 import Comments from "./Comments"
+import "../styles/Article.css"
 
 const Article = () => {
   const { article_id } = useParams()

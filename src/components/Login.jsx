@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
-import { getUser } from "../utils/fetches"
 import { useNavigate } from "react-router"
+import { getUser } from "../utils/fetches"
 import { UserContext } from "../contexts/UserContext"
 import "../styles/Login.css"
 
@@ -8,9 +8,9 @@ const Login = () => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
   const [usernameInput, setUsernameInput] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
   const [isValidating, setIsValidating] = useState(false)
   const [errorText, setErrorText] = useState("")
-  const [isLoading, setIsLoading] = useState(true)
 
   const handleInputChange = (e) => {
     setUsernameInput(e.target.value)

@@ -1,17 +1,17 @@
+import { useContext, useEffect, useState } from "react"
+import { useParams } from "react-router"
+import { postComment } from "../utils/fetches"
 import { UserContext } from "../contexts/UserContext"
 import "../styles/PostCommentForm.css"
-import { useContext, useEffect, useState } from "react"
-import { postComment } from "../utils/fetches"
-import { useParams } from "react-router"
 
 const PostCommentForm = ({ refreshComments, setRefreshComments }) => {
   const { user } = useContext(UserContext)
-  const [commentValue, setCommentValue] = useState("")
-  const [errorText, setErrorText] = useState("")
   const { article_id } = useParams()
-  const [isValidating, setIsValidating] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [commentValue, setCommentValue] = useState("")
   const [placeholderText, setPlaceholderText] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
+  const [isValidating, setIsValidating] = useState(false)
+  const [errorText, setErrorText] = useState("")
 
   function handleChange(e) {
     setCommentValue(e.target.value)

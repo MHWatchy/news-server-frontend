@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { getTopics } from "../utils/fetches"
 
 const Topics = ({ filters, setFilters, setSearchParams }) => {
-  const [isLoading, setIsLoading] = useState(true)
   const [topics, setTopics] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   function handleChange(e) {
     setFilters({ ...filters, topic: e.target.value })
@@ -28,8 +28,15 @@ const Topics = ({ filters, setFilters, setSearchParams }) => {
 
   return (
     <form className="filterForm">
-      <select id="topicSelector" className="selector" onChange={handleChange} defaultValue={filters.topic}>
-        <option value={""} className="text">All Topics</option>
+      <select
+        id="topicSelector"
+        className="selector"
+        onChange={handleChange}
+        defaultValue={filters.topic}
+      >
+        <option value={""} className="text">
+          All Topics
+        </option>
         {topics.map((topic) => {
           return (
             <option value={topic.slug} key={topic.slug} className="text">

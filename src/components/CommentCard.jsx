@@ -1,6 +1,6 @@
 import { useState } from "react"
-import "../styles/CommentCard.css"
 import { deleteComment } from "../utils/fetches"
+import "../styles/CommentCard.css"
 
 const CommentCard = ({
   comment,
@@ -8,9 +8,9 @@ const CommentCard = ({
   refreshComments,
   setRefreshComments,
 }) => {
-  const [errorText, setErrorText] = useState("")
   const date = new Date(comment.created_at)
   comment = { ...comment, created_at: date.toUTCString() }
+  const [errorText, setErrorText] = useState("")
 
   function handleDelete(e) {
     e.target.hidden = true
@@ -36,7 +36,9 @@ const CommentCard = ({
       <p className="text mainComment">{comment.body}</p>
       <p className="text">{comment.votes} votes</p>
       {username === comment.author ? (
-        <button onClick={handleDelete} className="text">Delete</button>
+        <button onClick={handleDelete} className="text">
+          Delete
+        </button>
       ) : null}
       {!errorText ? null : <p className="errorMessage">{errorText}</p>}
     </li>
